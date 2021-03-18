@@ -1,0 +1,10 @@
+<%- include('template/header'); %>
+<h1>Home</h1>
+<p><%= homePara %></p>
+<hr>
+<% for(var i=0;i<poster.length;i++){ %>
+        <h2><%= poster[i].postTitle %></h2>
+        <p><%= poster[i].postContent %></p>
+
+<%}%>
+<%- include('template/footer'); %>
