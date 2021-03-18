@@ -34,6 +34,10 @@ app.get("/posts/:postname",function(req,res){
        Content:element.postContent
       });
     }
+    else
+    {
+      res.render("error");
+    }
   })
 })
 app.get("/about", function(req, res){
