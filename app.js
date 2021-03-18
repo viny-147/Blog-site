@@ -1,5 +1,5 @@
 //jshint esversion:6
-
+const _ = require('lodash');
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -21,21 +21,21 @@ app.get("/", function(req, res){
     homePara:homeStartingContent,
     poster:posts
   });
+  console.log(posts);
 })
-// app.get("/posts/:postname",function(req,res){
-//   var currentTitle = posts.postTitle;
-//   var currentParams=req.params;
-//   for(var i=0; i<currentParams.length;i++){
-//     if (currentParams===currentTitle)
-//     {
-//       console.log("Match found");
-//     }
-//     else
-//     {
-//       console.log("Match Not found");s
-//     }
-//   }
-// })
+app.get("/posts/:postname",function(req,res){
+  var requestedTitle = _.lowerCase(req.params.postname);
+  posts.forEach(function (element) {
+    var storedtitle = _.lowerCase(element.postTitle);
+    if(storedtitle === requestedTitle)
+    {
+      res.render("post",{
+       Title:element.postTitle,
+       Content:element.postContent
+      });
+    }
+  })
+})
 app.get("/about", function(req, res){
   res.render("about",{aboutPara:aboutContent});
 })

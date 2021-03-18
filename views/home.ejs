@@ -4,7 +4,10 @@
 <hr>
 <% for(var i=0;i<poster.length;i++){ %>
         <h2><%= poster[i].postTitle %></h2>
-        <p><%= poster[i].postContent %></p>
+        <p>
+           <%= poster[i].postContent.substring(0, 100)+"...."; %>
+           <a href="/posts/<%= poster[i].postTitle %>" target="_blank" rel="noopener noreferrer">See more</a>
+        </p>
 
 <%}%>
 <%- include('template/footer'); %>
